@@ -35,8 +35,10 @@ static const char* EXAMPLE_INI =
     "yPos     = 9\n"
     "charge   = -10E-6\n\n"
     "# Balls are prefixed with `BALL_X` where X is the id\n"
-    "[BALL_0]\n";
-
+    "[BALL_0]\n"
+    "xPos     = -5          ; X-axis posisition\n"
+    "yPos     = -5          ; y-axis pos\n"
+    "mass     = .1          ; mass in kilograms\n";
 
 
 #endif // CONFIG_H_INC
