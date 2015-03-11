@@ -5,10 +5,10 @@
 # Compiler Settings
 CPP=g++
 CPP_FLGS=
-LD_FLGS=
+LD_FLGS=-liniparser
 
 # Code Settings
-SRC=$(shell find . -name "*.c*")
+SRC=$(shell find . -regextype sed -regex ".*/.*.cpp")
 OBJ=$(SRC:.cpp=.o)
 EXE=EleFieldSim.out
 
