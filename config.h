@@ -40,5 +40,10 @@ static const char* EXAMPLE_INI =
     "yPos     = -5          ; y-axis pos\n"
     "mass     = .1          ; mass in kilograms\n";
 
+/**\brief Parses the arguements passed to prog
+ * \param argc arguement count
+ * \param argv argument array
+ */
+int parseArgs(int argc, char **argv);
 
 #endif // CONFIG_H_INC

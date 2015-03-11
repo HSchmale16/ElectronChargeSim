@@ -8,3 +8,15 @@
  */
 
 #include "config.h"
+#include <iostream>
+
+int parseArgs(int argc, char **argv){
+    if(argc <= 1){
+        std::cout << "ARG FAIL! SEE PROJECT DOC AT main.cpp of this"
+                  << " project" << std::endl;
+        return 0; // No Good
+    }
+    if(argv[1][0] == 's'){
+        
+    }
+}
