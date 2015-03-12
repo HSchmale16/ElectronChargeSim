@@ -67,4 +67,5 @@ static const char* EXAMPLE_INI =
  */
 int parseArgs(int argc, char **argv);
 
+const int ARG_FAILED = 0; //!< Failed to parse args for some reason
 #endif // CONFIG_H_INC
