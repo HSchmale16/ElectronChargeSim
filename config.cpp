@@ -20,6 +20,7 @@
 #include <iostream>
 #include <fstream>
 #include <ios>
+#include <cassert>
 
 using namespace std;
 
@@ -30,6 +31,7 @@ int parseArgs(int argc, char **argv){
         return ARG_FAILED; // No Good
     }
     if(argv[1][0] == 's'){
+        assert(argc > 2);
         return 1; // it's good
     }
     if(argv[1][0] == 'e'){
