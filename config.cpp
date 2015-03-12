@@ -26,27 +26,40 @@ extern "C"{ // Not included in this header
 };
 
 // INI Key Id Constant Strings
-#define XMIN       "GLOBAL:Xmin"
-#define XMAX       "GLOBAL:Xmax"
-#define YMIN       "GLOBAL:Ymin"
-#define YMAX       "GLOBAL:Ymax"
-#define NUMSRCS    "GLOBAL:NumSrcs"
-#define NUMBALLS   "GLOBAL:NumBall"
-#define DXYRES     "GLOBAL:dXYRes"
-#define DTRES      "GLOBAL:dTRes"
-#define SIMULATE   "GLOBAL:simulate"
-#define TSIM       "GLOBAL:TSim"
+#define D_XMIN       "GLOBAL:Xmin"
+#define D_XMAX       "GLOBAL:Xmax"
+#define D_YMIN       "GLOBAL:Ymin"
+#define D_YMAX       "GLOBAL:Ymax"
+#define D_NUMSRCS    "GLOBAL:NumSrcs"
+#define D_NUMBALLS   "GLOBAL:NumBall"
+#define D_DXYRES     "GLOBAL:dXYRes"
+#define D_DTRES      "GLOBAL:dTRes"
+#define D_SIMULATE   "GLOBAL:simulate"
+#define D_TSIM       "GLOBAL:TSim"
 
 // any of the constants below need to be processed with snprintf for
 // index numbers, before using as a key for iniparser
-#define SRC_XPOS   "SRC_%d:xPos"
-#define SRC_YPOS   "SRC_%d:yPos"
-#define SRC_CHARGE "SRC_%d:charge"
-#define BLL_XPOS   "BLL_%d:xPos"
-#define BLL_YPOS   "BLL_%d:yPos"
-#define BLL_MASS   "BLL_%d:mass"
+#define D_SRC_XPOS   "SRC_%d:xPos"
+#define D_SRC_YPOS   "SRC_%d:yPos"
+#define D_SRC_CHARGE "SRC_%d:charge"
+#define D_BLL_XPOS   "BLL_%d:xPos"
+#define D_BLL_YPOS   "BLL_%d:yPos"
+#define D_BLL_MASS   "BLL_%d:mass"
 
 using namespace std;
+
+namespace con{
+double XMIN;
+double XMAX;
+double YMIN;
+double YMAX;
+double DXY_RES;
+double DT_RES;
+double TSIM;
+bool   SIMULATE;
+int    NUM_SRCS;
+int    NUM_BLLS;
+}
 
 int parseArgs(int argc, char **argv){
     if(argc <= 1){

@@ -10,6 +10,8 @@
 #ifndef CONFIG_H_INC
 #define CONFIG_H_INC
 
+#include "physics.h"
+
 // Contains the complete text of an example configuration file
 static const char* EXAMPLE_INI =
     "# Example Electron Field Sim Job File\n"
@@ -38,8 +40,21 @@ static const char* EXAMPLE_INI =
     "[BLL_0]\n"
     "xPos     = -5          ; X-axis posisition\n"
     "yPos     = -5          ; y-axis pos\n"
-    "mass     = .1          ; mass in kilograms\n";
- 
+    "mass     = .1          ; mass in kilograms\n"
+    "charge   = 1E-6        ; charge on this ball\n";
+
+namespace con{
+extern double XMIN;
+extern double XMAX;
+extern double YMIN;
+extern double YMAX;
+extern double DXY_RES;
+extern double DT_RES;
+extern double TSIM;
+extern bool   SIMULATE;
+extern int    NUM_SRCS;
+extern int    NUM_BLLS;
+}
 
 /**\brief Parses the arguements passed to prog and performs loading
  *        the params from the INI file into globals declared above.
