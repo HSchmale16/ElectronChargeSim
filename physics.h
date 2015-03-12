@@ -47,6 +47,11 @@ struct pithBall{
     double m_yPos;           //!< Current Y Pos
     double m_dX;             //!< current acceleration on x-axis
     double m_dY;             //!< current acceleration on y-axis 
+    double m_mass;           //!< Mass of this ball (Kg)
+
+    pithBall()
+        :m_initX(0), m_initY(0), m_charge(0), m_xPos(0),
+         m_yPos(0), m_dX(0), m_dY(0), m_mass(0) {}
 };
 
 inline double calcDistance(chargeSrc *s1, chargeSrc *s2){

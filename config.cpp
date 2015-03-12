@@ -48,6 +48,7 @@ extern "C"{ // Not included in this header
 #define D_BLL_XPOS   "BLL_%d:xPos"
 #define D_BLL_YPOS   "BLL_%d:yPos"
 #define D_BLL_MASS   "BLL_%d:mass"
+#define D_BLL_CHARGE "BLL_%d:charge"
 
 using namespace std;
 
@@ -99,15 +100,27 @@ static int loadConstants(char *fname){
     }else{
         LOG(ERROR) << "Invalid value defined in NUMSRCS in job file";
     }
+    char buffer[50] = {0};
     if(NUMBALLS > 0){
         balls = new pithBall[NUMBALLS];
+        for(int i = 0; i < NUMBALLS; i++){
+            snprintf(buffer, 50, D_BLL_XPOS, i);
+            balls[i].m_xPos  = iniparser_getdouble(dict, buffer, 0);
+            balls[i].m_initX = balls[i].m_xPos;
+            snprintf(buffer, 50, D_BLL_YPOS, i);
+            balls[i].m_yPos  = iniparser_getdouble(dict, buffer, 0);
+            balls[i].m_initY = balls[i].m_yPos;
+            snprintf(buffer, 50, D_BLL_MASS, i);
+            balls[i].m_mass  = iniparser_getdouble(dict, buffer, 0);
+            snprintf(buffer, 50, D_BLL_CHARGE, i);
+            balls[i].m_charge= iniparser_getdouble(dict, buffer, 0); 
+        }
     }else{
         LOG(ERROR) << "Invalid value defined in NUMBALLS in job file";
     }
     int arraySz = ((XMAX - XMIN) / DXY_RES) * ((YMAX - YMIN) / DXY_RES);
     vectors = new vec2d[arraySz];
-
-    LOG(INFO) << "memory allocation is complete";
+    LOG(INFO) << "memory allocation and initialization is complete";
 }
 
 
