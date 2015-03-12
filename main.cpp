@@ -14,9 +14,11 @@
 
 #include <iostream>
 #include <cstdio>
-#include <iniparser.h>
 #include <Board.h>
 #include "config.h"
+extern "C"{ // Not included in this header
+    #include <iniparser.h>
+};
 
 using namespace LibBoard;
 
