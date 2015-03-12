@@ -26,4 +26,5 @@ int main(int argc, char **argv){
     if(argret == ARG_FAILED){
         return 0;
     }
+    shutdown();
 }

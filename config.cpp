@@ -79,6 +79,7 @@ static int loadConstants(char *fname){
     SIMULATE = iniparser_getboolean(dict, D_SIMULATE, 0);
     NUMSRCS  = iniparser_getint(dict, D_NUMSRCS, 0);
     NUMBALLS = iniparser_getint(dict, D_NUMBALLS, 0);
+    iniparser_dump(dict, stderr);
 }
 
 
@@ -115,5 +116,5 @@ int parseArgs(int argc, char **argv){
 }
 
 void shutdown(){
-    
+   iniparser_freedict(dict); 
 }
