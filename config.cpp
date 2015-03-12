@@ -23,6 +23,7 @@
 #include <ios>
 #include <cassert>
 #include <cstdio>
+#include <cstring>
 extern "C"{ // Not included in this header
     #include <iniparser.h>
 };
@@ -72,6 +73,7 @@ static dictionary *dict;
 // this is a private function to load the constants from the INI
 // file given.
 static int loadConstants(char *fname){
+    char buffer[50] = {0};
     LOG(INFO) << "Now loading constants and allocating "
               << " memory for constants";
     CHECK(fname != NULL);
@@ -97,10 +99,17 @@ static int loadConstants(char *fname){
 
     if(NUMSRCS > 0){
         charges = new chargeSrc[NUMSRCS];
+        for(int i = 0; i < NUMSRCS; i++){
+            snprintf(buffer, 50, D_SRC_XPOS, i);
+            charges[i].m_xPos = iniparser_getdouble(dict, buffer, 0);
+            snprintf(buffer, 50, D_SRC_YPOS, i);
+            charges[i].m_yPos = iniparser_getdouble(dict, buffer, 0);
+            snprintf(buffer, 50, D_SRC_CHARGE, i);
+            charges[i].m_charge = iniparser_getdouble(dict, buffer, 0);
+        }
     }else{
         LOG(ERROR) << "Invalid value defined in NUMSRCS in job file";
     }
-    char buffer[50] = {0};
     if(NUMBALLS > 0){
         balls = new pithBall[NUMBALLS];
         for(int i = 0; i < NUMBALLS; i++){
