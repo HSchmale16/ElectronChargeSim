@@ -51,8 +51,8 @@ extern double DXY_RES;
 extern double DT_RES;
 extern double TSIM;
 extern bool   SIMULATE;
-extern int    NUM_SRCS;
-extern int    NUM_BLLS;
+extern int    NUMSRCS;
+extern int    NUMBALLS;
 
 
 /**\brief Parses the arguements passed to prog and performs loading

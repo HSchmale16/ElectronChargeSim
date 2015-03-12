@@ -21,6 +21,7 @@
 #include <fstream>
 #include <ios>
 #include <cassert>
+#include <cstdio>
 extern "C"{ // Not included in this header
     #include <iniparser.h>
 };
@@ -56,15 +57,28 @@ double DXY_RES;
 double DT_RES;
 double TSIM;
 bool   SIMULATE;
-int    NUM_SRCS;
-int    NUM_BLLS;
+int    NUMSRCS;
+int    NUMBALLS;
 
 dictionary *dict;
 
 // this is a private function to load the constants from the INI
 // file given.
 static int loadConstants(char *fname){
-
+    assert(fname != NULL);
+    dict = iniparser_load(fname); // load config file with iniparser
+    
+    // Load the constants
+    XMIN     = iniparser_getdouble(dict, D_XMIN, 0);
+    XMAX     = iniparser_getdouble(dict, D_XMAX, 0);
+    YMIN     = iniparser_getdouble(dict, D_YMIN, 0);
+    YMAX     = iniparser_getdouble(dict, D_YMAX, 0);
+    DXY_RES  = iniparser_getdouble(dict, D_DXYRES, 0);
+    DT_RES   = iniparser_getdouble(dict, D_DTRES, 0);
+    TSIM     = iniparser_getdouble(dict, D_TSIM, 0);
+    SIMULATE = iniparser_getboolean(dict, D_SIMULATE, 0);
+    NUMSRCS  = iniparser_getint(dict, D_NUMSRCS, 0);
+    NUMBALLS = iniparser_getint(dict, D_NUMBALLS, 0);
 }
 
 
