@@ -18,6 +18,10 @@
 
 #include "config.h"
 #include <iostream>
+#include <fstream>
+#include <ios>
+
+using namespace std;
 
 int parseArgs(int argc, char **argv){
     if(argc <= 1){
@@ -29,6 +33,15 @@ int parseArgs(int argc, char **argv){
         return 1; // it's good
     }
     if(argv[1][0] == 'e'){
-
+        if(argv[2] != NULL){
+            // output to file
+            fstream out(argv[2], ios::out | ios::binary);
+            out << EXAMPLE_INI;
+            out.close();
+        }else{
+            // write to stdout
+            std::cout << EXAMPLE_INI;
+        }
+        return ARG_FAILED;
     }
 }
