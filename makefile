@@ -6,8 +6,8 @@
 CPP=g++
 CPP_FLGS=
 LD_FLGS=\
-	-liniparser \
-	-lboard
+	-liniparser
+	#-lboard
 
 # Code Settings
 SRC=$(shell find . -regextype sed -regex ".*/.*.cpp")

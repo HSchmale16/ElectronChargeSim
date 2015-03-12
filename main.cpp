@@ -14,16 +14,11 @@
 
 #include <iostream>
 #include <cstdio>
-#include <Board.h>
-extern "C"{ // Not included in this header
-    #include <iniparser.h>
-};
+//#include <Board.h>
 #include "config.h"
 #include "physics.h"
 
-using namespace LibBoard;
-
-dictionary *dict; // ini dictionary
+//using namespace LibBoard;
 
 // prog entry point
 int main(int argc, char **argv){
