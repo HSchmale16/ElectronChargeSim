@@ -54,6 +54,10 @@ extern bool   SIMULATE;
 extern int    NUMSRCS;
 extern int    NUMBALLS;
 
+// allocated arrays
+extern vec2d     *vectors;
+extern chargeSrc *charges;
+extern pithBall  *balls;
 
 /**\brief Parses the arguements passed to prog and performs loading
  *        the params from the INI file into globals declared above.

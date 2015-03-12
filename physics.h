@@ -28,9 +28,9 @@ struct chargeSrc{
 };
 
 struct pithBall{
-    const double m_initX;    //!< Initial X Pos
-    const double m_initY;    //!< Initial Y Pos
-    const double m_charge;   //!< Charge of this pithball
+    double m_initX;          //!< Initial X Pos
+    double m_initY;          //!< Initial Y Pos
+    double m_charge;         //!< Charge of this pithball
     double m_xPos;           //!< Current X Pos
     double m_yPos;           //!< Current Y Pos
     double m_dX;             //!< current acceleration on x-axis

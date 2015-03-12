@@ -5,4 +5,5 @@ parameters.
 
 # Depends
 * LibBoard: <http://libboard.sourceforge.net/>
-* 
+* GLog
+* iniparser 

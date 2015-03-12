@@ -1,4 +1,5 @@
 /** Config File Implementation for Electric Field Sim
+ * 
  * \author Henry J Schmale
  * \date March 11, 2015
  * \file config.cpp
@@ -25,6 +26,7 @@
 extern "C"{ // Not included in this header
     #include <iniparser.h>
 };
+#include <glog/logging.h>
 
 // INI Key Id Constant Strings
 #define D_XMIN       "GLOBAL:Xmin"
@@ -60,7 +62,11 @@ bool   SIMULATE;
 int    NUMSRCS;
 int    NUMBALLS;
 
-dictionary *dict;
+vec2d     *vectors;
+chargeSrc *charges;
+pithBall  *balls;
+
+static dictionary *dict;
 
 // this is a private function to load the constants from the INI
 // file given.
@@ -79,11 +85,21 @@ static int loadConstants(char *fname){
     SIMULATE = iniparser_getboolean(dict, D_SIMULATE, 0);
     NUMSRCS  = iniparser_getint(dict, D_NUMSRCS, 0);
     NUMBALLS = iniparser_getint(dict, D_NUMBALLS, 0);
-    iniparser_dump(dict, stderr);
+
+    if(NUMSRCS > 0){
+        charges = new chargeSrc[NUMSRCS];
+    }else{
+        
+    }
+    if(NUMBALLS > 0){
+        balls = new pithBall[NUMBALLS];
+    }
 }
 
 
 int parseArgs(int argc, char **argv){
+    FLAGS_log_dir = "./logs/";
+    google::InitGoogleLogging(argv[0]);
     if(argc <= 1){
         cerr << "ARG FAIL! SEE PROJECT DOC AT main.cpp of this"
              << " project" << std::endl;
