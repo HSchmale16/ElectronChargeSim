@@ -101,16 +101,17 @@ int parseArgs(int argc, char **argv){
     FLAGS_log_dir = "./logs/";
     google::InitGoogleLogging(argv[0]);
     if(argc <= 1){
-        cerr << "ARG FAIL! SEE PROJECT DOC AT main.cpp of this"
-             << " project" << std::endl;
+        LOG(FATAL) << "ARG FAIL! SEE PROJECT DOC AT main.cpp of this"
+                   << " project" << std::endl;
         return ARG_FAILED; // No Good
     }
     if(argv[1][0] == 's'){
         if(argc != 3){
-            cerr << "ARG FAIL! Did you forget a file name. "
-                 << "That is required for the simulate option.\n"
-                 << "A config file can be generated with the command:\n"
-                 << argv[0] << " e <file>" << std::endl;
+            LOG(FATAL) << "ARG FAIL! Did you forget a file name. "
+                       << "That is required for the simulate option.\n"
+                       << "A config file can be generated with the "
+                       << "command:\n"  << argv[0] << " e <file>" 
+                       << std::endl;
             return ARG_FAILED;
         }else{
             loadConstants(argv[2]);

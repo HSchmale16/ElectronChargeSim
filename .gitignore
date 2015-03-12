@@ -24,3 +24,6 @@
 
 # job files, used for defining prgm params
 *.job
+
+# logs directory
+logs*
