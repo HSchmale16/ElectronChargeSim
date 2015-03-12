@@ -15,10 +15,11 @@
 #include <iostream>
 #include <cstdio>
 #include <Board.h>
-#include "config.h"
 extern "C"{ // Not included in this header
     #include <iniparser.h>
 };
+#include "config.h"
+#include "physics.h"
 
 using namespace LibBoard;
 
