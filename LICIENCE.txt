@@ -1,0 +1,4 @@
+Copyright 2015 Henry J Schmale
+
+This program is the sole-properity of Henry J Schmale for the time-being.
+The source code is available for educational use only.
