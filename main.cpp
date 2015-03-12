@@ -24,5 +24,8 @@ dictionary *dict; // ini dictionary
 
 // prog entry point
 int main(int argc, char **argv){
-    int argret = parseArgs(argc, argv);
+    //int argret = parseArgs(argc, argv);
+    dict = iniparser_load("i.job");
+    std::cout << iniparser_getint(dict, XMIN, 0);
+    iniparser_freedict(dict);
 }

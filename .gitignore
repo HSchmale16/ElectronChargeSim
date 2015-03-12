@@ -21,3 +21,6 @@
 *.exe
 *.out
 *.app
+
+# job files, used for defining prgm params
+*.job
