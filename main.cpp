@@ -15,17 +15,14 @@
 #include <iostream>
 #include <cstdio>
 #include <iniparser.h>
+#include <Board.h>
 #include "config.h"
+
+using namespace LibBoard;
 
 dictionary *dict; // ini dictionary
 
-// fwd decl funcs
-
-
 // prog entry point
 int main(int argc, char **argv){
-    int arg = parseArgs(argc, argv);
-    if(!arg){
-        return 0;
-    }
+    int argret = parseArgs(argc, argv);
 }

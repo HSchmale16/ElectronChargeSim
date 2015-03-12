@@ -40,6 +40,11 @@ static const char* EXAMPLE_INI =
     "yPos     = -5          ; y-axis pos\n"
     "mass     = .1          ; mass in kilograms\n";
 
+// INI Key Id Constant Strings
+#define XMIN "GLOBAL:Xmin"
+#define XMAX "GLOBAL:Xmax"
+#define YMIN "GLOBAL:Ymin"
+
 /**\brief Parses the arguements passed to prog
  * \param argc arguement count
  * \param argv argument array
