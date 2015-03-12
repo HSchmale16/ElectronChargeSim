@@ -12,6 +12,18 @@
 struct vec2d{
     double m_xC;             //!< x componet (newtons)
     double m_yC;             //!< y componet (newtons)
+
+    vec2d()
+        :m_xC(0), m_yC(0) {}
+
+    vec2d(double x, double y)
+        :m_xC(x), m_yC(y) {}
+    
+    // Assignment opperator
+    void operator()(double x, double y){
+        m_xC = x;
+        m_yC = y;
+    }
 };
 
 struct chargeSrc{

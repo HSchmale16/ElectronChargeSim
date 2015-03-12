@@ -71,7 +71,9 @@ static dictionary *dict;
 // this is a private function to load the constants from the INI
 // file given.
 static int loadConstants(char *fname){
-    assert(fname != NULL);
+    LOG(INFO) << "Now loading constants and allocating "
+              << " memory for constants";
+    CHECK(fname != NULL);
     dict = iniparser_load(fname); // load config file with iniparser
     
     // Load the constants
@@ -86,14 +88,26 @@ static int loadConstants(char *fname){
     NUMSRCS  = iniparser_getint(dict, D_NUMSRCS, 0);
     NUMBALLS = iniparser_getint(dict, D_NUMBALLS, 0);
 
+    // Verify information fetched
+    CHECK(XMIN < XMAX);
+    CHECK(YMIN < YMAX);
+    CHECK(DXY_RES > 0);
+    LOG(INFO) << "Finished Fetching Global Values from INI file";
+
     if(NUMSRCS > 0){
         charges = new chargeSrc[NUMSRCS];
     }else{
-        
+        LOG(ERROR) << "Invalid value defined in NUMSRCS in job file";
     }
     if(NUMBALLS > 0){
         balls = new pithBall[NUMBALLS];
+    }else{
+        LOG(ERROR) << "Invalid value defined in NUMBALLS in job file";
     }
+    int arraySz = ((XMAX - XMIN) / DXY_RES) * ((YMAX - YMIN) / DXY_RES);
+    vectors = new vec2d[arraySz];
+
+    LOG(INFO) << "memory allocation is complete";
 }
 
 
@@ -133,5 +147,10 @@ int parseArgs(int argc, char **argv){
 }
 
 void shutdown(){
-   iniparser_freedict(dict); 
+    LOG(INFO) << "Begining shutdown procedure";
+    iniparser_freedict(dict); 
+    delete[] balls;
+    delete[] vectors;
+    delete[] charges;
+    LOG(INFO) << "Finished memory clean up";
 }
