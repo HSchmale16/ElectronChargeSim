@@ -43,7 +43,6 @@ static const char* EXAMPLE_INI =
     "mass     = .1          ; mass in kilograms\n"
     "charge   = 1E-6        ; charge on this ball\n";
 
-namespace con{
 extern double XMIN;
 extern double XMAX;
 extern double YMIN;
@@ -54,7 +53,7 @@ extern double TSIM;
 extern bool   SIMULATE;
 extern int    NUM_SRCS;
 extern int    NUM_BLLS;
-}
+
 
 /**\brief Parses the arguements passed to prog and performs loading
  *        the params from the INI file into globals declared above.
@@ -64,4 +63,10 @@ extern int    NUM_BLLS;
 int parseArgs(int argc, char **argv);
 
 const int ARG_FAILED = 0; //!< Failed to parse args for some reason
+
+/**\brief Deallocates Memory Used by configuration system.
+ * \return nothing
+ */
+void shutdown();
+
 #endif // CONFIG_H_INC

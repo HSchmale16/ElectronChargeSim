@@ -48,7 +48,6 @@ extern "C"{ // Not included in this header
 
 using namespace std;
 
-namespace con{
 double XMIN;
 double XMAX;
 double YMIN;
@@ -59,16 +58,32 @@ double TSIM;
 bool   SIMULATE;
 int    NUM_SRCS;
 int    NUM_BLLS;
+
+dictionary *dict;
+
+// this is a private function to load the constants from the INI
+// file given.
+static int loadConstants(char *fname){
+
 }
+
 
 int parseArgs(int argc, char **argv){
     if(argc <= 1){
-        std::cout << "ARG FAIL! SEE PROJECT DOC AT main.cpp of this"
-                  << " project" << std::endl;
+        cerr << "ARG FAIL! SEE PROJECT DOC AT main.cpp of this"
+             << " project" << std::endl;
         return ARG_FAILED; // No Good
     }
     if(argv[1][0] == 's'){
-        assert(argc > 2);
+        if(argc != 3){
+            cerr << "ARG FAIL! Did you forget a file name. "
+                 << "That is required for the simulate option.\n"
+                 << "A config file can be generated with the command:\n"
+                 << argv[0] << " e <file>" << std::endl;
+            return ARG_FAILED;
+        }else{
+            loadConstants(argv[2]);
+        }
         return 1; // it's good
     }
     if(argv[1][0] == 'e'){
@@ -83,4 +98,8 @@ int parseArgs(int argc, char **argv){
         }
         return ARG_FAILED;
     }
+}
+
+void shutdown(){
+    
 }
