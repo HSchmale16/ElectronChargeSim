@@ -54,8 +54,8 @@ void drawVectors(){
     int i = 0;
     for(double x = XMIN; x < XMAX; x += DXY_RES){
         for(double y = YMIN; y < YMAX; y += DXY_RES){
-            board.drawLine((x + vectors[i].m_xC) * SCALE_FACTOR,
-                           (y + vectors[i].m_yC) * SCALE_FACTOR,
+            board.drawArrow(vectors[i].m_xC * SCALE_FACTOR + y,
+                           vectors[i].m_yC * SCALE_FACTOR + x,
                             x * SCALE_FACTOR,
                             y * SCALE_FACTOR);
             i++;
