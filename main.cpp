@@ -13,9 +13,11 @@
  */
 
 #include <iostream>
+#include <string>
 #include <cstdio>
 #include "config.h"
 #include "physics.h"
+#include "graphics.h"
 
 //using namespace LibBoard;
 
@@ -25,5 +27,8 @@ int main(int argc, char **argv){
     if(argret == ARG_FAILED){
         return 0;
     }
+    initDrawing();
+    drawChargeSrcs();
+    doneDraw(std::string(std::string(argv[2]) + ".svg").c_str());
     shutdown();
 }

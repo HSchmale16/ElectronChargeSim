@@ -8,8 +8,13 @@
 #ifndef GRAPHICS_H_INC
 #define GRAPHICS_H_INC
 
+const double SCALE_FACTOR = 100.0;
+const double PARTI_RADIUS = 20.0;
+
 void initDrawing();
 
 void drawChargeSrcs();
+
+void doneDraw(const char *fname);
 
 #endif // GRAPHICS_H_INC
