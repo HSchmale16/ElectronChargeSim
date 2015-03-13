@@ -50,13 +50,15 @@ void drawChargeSrcs(){
 void drawVectors(){
     LOG(INFO) << "Drawing Vectors";
     board.setPenColor(Color::White);
+    board.setLineWidth(.25);
     int i = 0;
     for(double x = XMIN; x < XMAX; x += DXY_RES){
         for(double y = YMIN; y < YMAX; y += DXY_RES){
-            board.drawArrow((x + vectors[i].m_xC) * SCALE_FACTOR,
-                            (y + vectors[i].m_yC) * SCALE_FACTOR,
-                             x * SCALE_FACTOR,
-                             y * SCALE_FACTOR);
+            board.drawLine((x + vectors[i].m_xC) * SCALE_FACTOR,
+                           (y + vectors[i].m_yC) * SCALE_FACTOR,
+                            x * SCALE_FACTOR,
+                            y * SCALE_FACTOR);
+            i++;
         }
     }
 }

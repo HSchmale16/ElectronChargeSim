@@ -19,7 +19,7 @@ struct vec2d{
     vec2d(double x, double y)
         :m_xC(x), m_yC(y) {}
     
-    // Assignment opperator
+    // Summing operator
     void operator()(double x, double y){
         m_xC = x;
         m_yC = y;
