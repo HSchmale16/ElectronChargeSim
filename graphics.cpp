@@ -33,14 +33,14 @@ void drawChargeSrcs(){
             board 
               << Ellipse(
                    (charges[i].m_xPos * SCALE_FACTOR) - (.5 * PARTI_RADIUS),
-                   (-charges[i].m_yPos* SCALE_FACTOR) - (.5 * PARTI_RADIUS),
+                   (charges[i].m_yPos* SCALE_FACTOR) - (.5 * PARTI_RADIUS),
                    PARTI_RADIUS, PARTI_RADIUS, Color::None,
                    Color::Red, 1.0);
         }else if(charges[i].m_charge < 0){
             board 
               << Ellipse(
                    (charges[i].m_xPos * SCALE_FACTOR) - (.5 * PARTI_RADIUS),
-                   (-charges[i].m_yPos* SCALE_FACTOR) - (.5 * PARTI_RADIUS),
+                   (charges[i].m_yPos* SCALE_FACTOR) - (.5 * PARTI_RADIUS),
                    PARTI_RADIUS, PARTI_RADIUS, Color::None,
                    Color::Blue, 1.0);
         }

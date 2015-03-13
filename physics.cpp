@@ -12,9 +12,13 @@ void calcElectroForceVecs(){
     double Et = 0;
     for(double x = XMIN; x < XMAX; x += DXY_RES){
         for(double y = YMIN; y < YMAX; y += DXY_RES){
+            if(i >= VECCOUNT){
+                continue;
+            }
+            Et = 0;
             for(int n = 0; n < NUMSRCS; n++){
-                Et = (charges[n].m_charge) /
-                      pow(calcDistance(&charges[n], x, y), 2);
+                Et += ((charges[n].m_charge) /
+                      pow(calcDistance(&charges[n], x, y), 2));
                 double angle = atan2((charges[n].m_xPos - x),
                                      (charges[n].m_yPos - y));
                 vectors[i].m_xC += cos(angle) * Et;
