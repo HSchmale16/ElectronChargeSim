@@ -31,10 +31,19 @@ void drawChargeSrcs(){
     for(int i = 0; i < NUMSRCS; i++){
         if(charges[i].m_charge > 0){
             board 
-              << Ellipse(charges[i].m_xPos - (.5 * PARTI_RADIUS),
-                         -charges[i].m_yPos - (.5 * PARTI_RADIUS),
-                         PARTI_RADIUS, PARTI_RADIUS, Color::None,
-                         Color::Red, 1.0);
+              << Ellipse(
+                   (charges[i].m_xPos * SCALE_FACTOR) - (.5 * PARTI_RADIUS),
+                   (-charges[i].m_yPos* SCALE_FACTOR) - (.5 * PARTI_RADIUS),
+                   PARTI_RADIUS, PARTI_RADIUS, Color::None,
+                   Color::Red, 1.0);
+        }else if(charges[i].m_charge < 0){
+            board 
+              << Ellipse(
+                   (charges[i].m_xPos * SCALE_FACTOR) - (.5 * PARTI_RADIUS),
+                   (-charges[i].m_yPos* SCALE_FACTOR) - (.5 * PARTI_RADIUS),
+                   PARTI_RADIUS, PARTI_RADIUS, Color::None,
+                   Color::Blue, 1.0);
+
         }
     }
 }

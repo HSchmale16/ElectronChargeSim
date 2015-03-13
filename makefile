@@ -26,3 +26,5 @@ $(EXE): $(SRC) $(OBJ)
 clean:
 	rm -f $(EXE)
 	rm -rf *.o
+
+.PHONY: clean
