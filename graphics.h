@@ -15,6 +15,8 @@ void initDrawing();
 
 void drawChargeSrcs();
 
+void drawVectors();
+
 void doneDraw(const char *fname);
 
 #endif // GRAPHICS_H_INC

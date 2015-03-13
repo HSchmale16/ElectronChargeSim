@@ -43,7 +43,20 @@ void drawChargeSrcs(){
                    (-charges[i].m_yPos* SCALE_FACTOR) - (.5 * PARTI_RADIUS),
                    PARTI_RADIUS, PARTI_RADIUS, Color::None,
                    Color::Blue, 1.0);
+        }
+    }
+}
 
+void drawVectors(){
+    LOG(INFO) << "Drawing Vectors";
+    board.setPenColor(Color::White);
+    int i = 0;
+    for(double x = XMIN; x < XMAX; x += DXY_RES){
+        for(double y = YMIN; y < YMAX; y += DXY_RES){
+            board.drawArrow((x + vectors[i].m_xC) * SCALE_FACTOR,
+                            (y + vectors[i].m_yC) * SCALE_FACTOR,
+                             x * SCALE_FACTOR,
+                             y * SCALE_FACTOR);
         }
     }
 }

@@ -53,6 +53,7 @@ extern double TSIM;
 extern bool   SIMULATE;
 extern int    NUMSRCS;
 extern int    NUMBALLS;
+extern int    VECCOUNT; //!< Number of vec2d(s) in vectors
 
 // allocated arrays
 extern vec2d     *vectors;

@@ -56,11 +56,18 @@ struct pithBall{
 
 inline double calcDistance(chargeSrc *s1, chargeSrc *s2){
     return sqrt(pow((s1->m_xPos - s2->m_xPos), 2) 
-              + pow((s1->m_yPos - s2->m_yPos), 2));
+             + pow((s1->m_yPos - s2->m_yPos), 2));
 }
 
 inline double calcDistance(chargeSrc *s1, pithBall *s2){
     return sqrt(pow((s1->m_xPos - s2->m_xPos), 2) 
               + pow((s1->m_yPos - s2->m_yPos), 2));
 }
+
+inline double calcDistance(chargeSrc *s1, double x, double y){
+    return sqrt(pow((s1->m_xPos - x), 2) 
+              + pow((s1->m_yPos - y), 2));
+}
+
+void calcElectroForceVecs();
 #endif // PHYSICS_H_INC

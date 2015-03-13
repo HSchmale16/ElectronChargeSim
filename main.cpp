@@ -28,6 +28,7 @@ int main(int argc, char **argv){
         return 0;
     }
     initDrawing();
+    drawVectors();
     drawChargeSrcs();
     doneDraw(std::string(std::string(argv[2]) + ".svg").c_str());
     shutdown();

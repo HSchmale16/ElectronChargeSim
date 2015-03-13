@@ -63,6 +63,7 @@ double TSIM;
 bool   SIMULATE;
 int    NUMSRCS;
 int    NUMBALLS;
+int    VECCOUNT;
 
 vec2d     *vectors;
 chargeSrc *charges;
@@ -128,6 +129,7 @@ static int loadConstants(char *fname){
         LOG(ERROR) << "Invalid value defined in NUMBALLS in job file";
     }
     int arraySz = ((XMAX - XMIN) / DXY_RES) * ((YMAX - YMIN) / DXY_RES);
+    VECCOUNT = arraySz;
     vectors = new vec2d[arraySz];
     LOG(INFO) << "memory allocation and initialization is complete";
 }
