@@ -17,7 +17,7 @@ EXE=EleFieldSim.out
 
 all: $(EXE)
 
-$(EXE): $(SRC) $(OBJ)
+$(EXE): $(shell find . -name ".[ch]*") $(SRC) $(OBJ)
 	$(CPP) $(LD_FLGS) -o $@ $(OBJ) 
 
 .cpp.o:
