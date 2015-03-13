@@ -107,6 +107,8 @@ static int loadConstants(char *fname){
             charges[i].m_yPos = iniparser_getdouble(dict, buffer, 0);
             snprintf(buffer, 50, D_SRC_CHARGE, i);
             charges[i].m_charge = iniparser_getdouble(dict, buffer, 0);
+            LOG(INFO) << "ChargeSrc[" << i << "] charge = " 
+                      << charges[i].m_charge;
         }
     }else{
         LOG(ERROR) << "Invalid value defined in NUMSRCS in job file";
@@ -124,6 +126,8 @@ static int loadConstants(char *fname){
             balls[i].m_mass  = iniparser_getdouble(dict, buffer, 0);
             snprintf(buffer, 50, D_BLL_CHARGE, i);
             balls[i].m_charge= iniparser_getdouble(dict, buffer, 0); 
+            LOG(INFO) << "Ball[" << i << "] charge = " 
+                      << balls[i].m_charge;
         }
     }else{
         LOG(ERROR) << "Invalid value defined in NUMBALLS in job file";

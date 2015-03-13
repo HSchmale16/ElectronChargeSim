@@ -17,13 +17,7 @@ struct vec2d{
         :m_xC(0), m_yC(0) {}
 
     vec2d(double x, double y)
-        :m_xC(x), m_yC(y) {}
-    
-    // Summing operator
-    void operator()(double x, double y){
-        m_xC = x;
-        m_yC = y;
-    }
+        :m_xC(x), m_yC(y) {} 
 };
 
 struct chargeSrc{
