@@ -14,7 +14,6 @@
 
 #include <iostream>
 #include <cstdio>
-//#include <Board.h>
 #include "config.h"
 #include "physics.h"
 
