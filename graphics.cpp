@@ -21,6 +21,9 @@ void initDrawing(){
     board.setLineJoin(Shape::MiterJoin);
     board.setLineCap(Shape::RoundCap);
     board.clear(0, 0, 0);
+    board.setPenColor(Color::Green);
+    board.drawLine(XMIN * SCALE_FACTOR, 0, XMAX * SCALE_FACTOR , 0);
+    board.drawLine(0, YMIN * SCALE_FACTOR, 0, YMAX * SCALE_FACTOR);
 }
 
 void drawChargeSrcs(){

@@ -9,7 +9,7 @@
 #define GRAPHICS_H_INC
 
 const double SCALE_FACTOR = 100.0;
-const double PARTI_RADIUS = 10.0;
+const double PARTI_RADIUS = 5.0;
 
 void initDrawing();
 
