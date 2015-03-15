@@ -22,6 +22,20 @@ void initDrawing(){
     board.setLineCap(Shape::RoundCap);
     board.clear(0, 0, 0);
     board.setPenColor(Color::Green);
+    board.setLineWidth(0.2);
+    for(double x = XMIN; x <= XMAX; x += DXY_RES){
+        if(x != 0){
+            board.drawLine(x * SCALE_FACTOR, YMAX * SCALE_FACTOR,
+                           x * SCALE_FACTOR, YMIN * SCALE_FACTOR);
+        }
+    }
+    for(double y = YMIN; y <= YMAX; y += DXY_RES){
+        if(y != 0){
+            board.drawLine(XMIN * SCALE_FACTOR, y * SCALE_FACTOR,
+                           XMAX * SCALE_FACTOR, y * SCALE_FACTOR);
+        }
+    }
+    board.setLineWidth(0.5);
     board.drawLine(XMIN * SCALE_FACTOR, 0, XMAX * SCALE_FACTOR , 0);
     board.drawLine(0, YMIN * SCALE_FACTOR, 0, YMAX * SCALE_FACTOR);
 }
@@ -35,17 +49,23 @@ void drawChargeSrcs(){
         if(charges[i].m_charge > 0){
             board 
               << Ellipse(
-                   (charges[i].m_xPos * SCALE_FACTOR) - (.5 * PARTI_RADIUS),
-                   (charges[i].m_yPos* SCALE_FACTOR) - (.5 * PARTI_RADIUS),
-                   PARTI_RADIUS, PARTI_RADIUS, Color::None,
-                   Color::Red, 1.0);
-        }else if(charges[i].m_charge < 0){
+                   (charges[i].m_xPos * SCALE_FACTOR) - PARTI_RADIUS,
+                   (charges[i].m_yPos * SCALE_FACTOR) - PARTI_RADIUS,
+                   2 * PARTI_RADIUS, 
+                   2 * PARTI_RADIUS, 
+                   Color::None,
+                   Color::Red, 
+                   1.0);
+        }else if(charges[i].m_charge < 0){ 
             board 
               << Ellipse(
-                   (charges[i].m_xPos * SCALE_FACTOR) - (.5 * PARTI_RADIUS),
-                   (charges[i].m_yPos* SCALE_FACTOR) - (.5 * PARTI_RADIUS),
-                   PARTI_RADIUS, PARTI_RADIUS, Color::None,
-                   Color::Blue, 1.0);
+                   (charges[i].m_xPos * SCALE_FACTOR) - PARTI_RADIUS,
+                   (charges[i].m_yPos * SCALE_FACTOR) - PARTI_RADIUS,
+                   2 * PARTI_RADIUS,
+                   2 * PARTI_RADIUS,
+                   Color::None,
+                   Color::Blue,
+                   1.0);
         }
     }
 }
