@@ -57,13 +57,15 @@ void drawVectors(){
     int i = 0;
     for(double x = XMIN; x <= XMAX; x += DXY_RES){
         for(double y = YMIN; y <= YMAX; y += DXY_RES){
-            double angle = atan2(vectors[i].m_yC, vectors[i].m_xC);
-            board.drawArrow(
-                 .2 * cos(angle) * SCALE_FACTOR + x * SCALE_FACTOR,
-                 .2 * sin(angle) * SCALE_FACTOR + y * SCALE_FACTOR,
-                 x * SCALE_FACTOR,
-                 y * SCALE_FACTOR);
-            i++;
+            if(i < VECCOUNT){
+                double angle = atan2(vectors[i].m_yC, vectors[i].m_xC);
+                board.drawArrow(
+                    .1 * cos(angle) * SCALE_FACTOR + x * SCALE_FACTOR,
+                    .1 * sin(angle) * SCALE_FACTOR + y * SCALE_FACTOR,
+                    x * SCALE_FACTOR,
+                    y * SCALE_FACTOR);
+                i++;
+            }
         }
     }
 }
