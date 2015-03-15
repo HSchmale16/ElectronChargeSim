@@ -34,18 +34,18 @@ struct chargeSrc{
 };
 
 struct pithBall{
-    double m_initX;          //!< Initial X Pos
-    double m_initY;          //!< Initial Y Pos
-    double m_charge;         //!< Charge of this pithball
     double m_xPos;           //!< Current X Pos
     double m_yPos;           //!< Current Y Pos
+    double m_vX;             //!< Initial X Pos
+    double m_vY;             //!< Initial Y Pos
     double m_dX;             //!< current acceleration on x-axis
     double m_dY;             //!< current acceleration on y-axis 
     double m_mass;           //!< Mass of this ball (Kg)
+    double m_charge;         //!< Charge of this pithball
 
     pithBall()
-        :m_initX(0), m_initY(0), m_charge(0), m_xPos(0),
-         m_yPos(0), m_dX(0), m_dY(0), m_mass(0) {}
+        :m_xPos(0), m_yPos(0), m_vX(0), m_vY(0), m_dX(0),
+         m_dY(0), m_mass(0), m_charge(0) {}
 };
 
 inline double calcDistance(chargeSrc *s1, chargeSrc *s2){

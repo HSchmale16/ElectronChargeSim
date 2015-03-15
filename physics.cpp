@@ -32,8 +32,6 @@ void calcElectroForceVecs(){
                     vectors[i].m_yC += sin(angle) * Et;
                 }
             }
-            LOG(INFO) << "vec[" << i << "] x = " 
-                      << vectors[i].m_xC << " " << vectors[i].m_yC;
             i++;
         }
     }
