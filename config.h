@@ -12,8 +12,9 @@
 
 #include "physics.h"
 
+
 // Contains the complete text of an example configuration file
-static const char* EXAMPLE_INI =
+const char EXAMPLE_INI[] =
     "# Example Electron Field Sim Job File\n"
     "[GLOBAL]\n"
     "Xmin     = -10         ; min x-axis coord simmed\n"

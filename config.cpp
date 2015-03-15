@@ -118,10 +118,8 @@ static int loadConstants(char *fname){
         for(int i = 0; i < NUMBALLS; i++){
             snprintf(buffer, 50, D_BLL_XPOS, i);
             balls[i].m_xPos  = iniparser_getdouble(dict, buffer, 0);
-            balls[i].m_initX = balls[i].m_xPos;
             snprintf(buffer, 50, D_BLL_YPOS, i);
             balls[i].m_yPos  = iniparser_getdouble(dict, buffer, 0);
-            balls[i].m_initY = balls[i].m_yPos;
             snprintf(buffer, 50, D_BLL_MASS, i);
             balls[i].m_mass  = iniparser_getdouble(dict, buffer, 0);
             snprintf(buffer, 50, D_BLL_CHARGE, i);
@@ -136,6 +134,7 @@ static int loadConstants(char *fname){
     VECCOUNT = arraySz;
     vectors = new vec2d[arraySz];
     LOG(INFO) << "memory allocation and initialization is complete";
+    return 0;
 }
 
 
@@ -171,7 +170,12 @@ int parseArgs(int argc, char **argv){
             std::cout << EXAMPLE_INI;
         }
         return ARG_FAILED;
+    }else{
+        LOG(FATAL) << "Bad Args Passed and can't be parsed.\n"
+                   << "Go read the documentation you stinking monkey";
+        return ARG_FAILED;
     }
+    
 }
 
 void shutdown(){

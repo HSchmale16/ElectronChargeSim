@@ -4,8 +4,11 @@
 
 # Compiler Settings
 CPP=g++
-CPP_FLGS=
-LD_FLGS=\
+CPP_FLGS= \
+	-Wall
+
+
+LD_FLGS= \
 	-liniparser \
 	-lboard \
 	-lglog
@@ -21,7 +24,7 @@ $(EXE): $(shell find . -name ".[ch]*") $(SRC) $(OBJ)
 	$(CPP) $(LD_FLGS) -o $@ $(OBJ) 
 
 .cpp.o:
-	$(CPP) -c $(CPP_FLAGS) -o $@ $<
+	$(CPP) -c $(CPP_FLGS) -o $@ $<
 
 clean:
 	rm -f $(EXE)
