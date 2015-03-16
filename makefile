@@ -7,10 +7,10 @@ SHELL=/bin/bash -O extglob -c
 
 # Compiler Settings
 CXX=g++
-CXX_FLGS= \
+CXX_FLGS= -pg \
 	-Wall
 
-LD_FLGS= \
+LD_FLGS= -pg \
 	-liniparser \
 	-lboard \
 	-lglog
@@ -28,7 +28,7 @@ $(EXE): $(SRC) $(OBJ)
 	$(CXX) $(LD_FLGS) -o $@ $(OBJ) 
 
 .cpp.o:
-	$(CXX) -c $(CPP_FLGS) -o $@ $<
+	$(CXX) -c $(CXX_FLGS) -o $@ $<
 
 .PHONY: clean
 clean:
