@@ -34,18 +34,17 @@ struct chargeSrc{
 };
 
 struct pithBall{
-    double m_xPos;           //!< Current X Pos
-    double m_yPos;           //!< Current Y Pos
-    double m_vX;             //!< Initial X Pos
-    double m_vY;             //!< Initial Y Pos
-    double m_dX;             //!< current acceleration on x-axis
-    double m_dY;             //!< current acceleration on y-axis 
-    double m_mass;           //!< Mass of this ball (Kg)
-    double m_charge;         //!< Charge of this pithball
+    double px, py;           //!< Prev x & y coords     (m)
+    double cx, cy;           //!< Current x & y coords  (m)
+    double vx, vy;           //!< velocity x & y axis   (m/s)
+    double ax, ay;           //!< current acceleration  (m/s^2)   
+    double fx, fy;           //!< forces on each axis   (Newtons)
+    double mass;             //!< mass of this object   (kg)
+    double charge;           //!< Charge of this        (Columbs)
 
     pithBall()
-        :m_xPos(0), m_yPos(0), m_vX(0), m_vY(0), m_dX(0),
-         m_dY(0), m_mass(0), m_charge(0) {}
+        :px(0), py(0), cx(0), cy(0), vx(0), vy(0), ax(0), ay(0),
+         fx(0), fy(0), mass(0), charge(0) {}
 };
 
 inline double calcDistance(chargeSrc *s1, chargeSrc *s2){
@@ -54,8 +53,8 @@ inline double calcDistance(chargeSrc *s1, chargeSrc *s2){
 }
 
 inline double calcDistance(chargeSrc *s1, pithBall *s2){
-    return sqrt(pow((s1->m_xPos - s2->m_xPos), 2) 
-              + pow((s1->m_yPos - s2->m_yPos), 2));
+    return sqrt(pow((s1->m_xPos - s2->cx), 2) 
+              + pow((s1->m_yPos - s2->cy), 2));
 }
 
 inline double calcDistance(chargeSrc *s1, double x, double y){

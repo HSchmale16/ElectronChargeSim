@@ -121,15 +121,15 @@ static int loadConstants(char *fname){
         CHECK_NOTNULL(balls);
         for(int i = 0; i < NUMBALLS; i++){
             snprintf(buffer, 50, D_BLL_XPOS, i);
-            balls[i].m_xPos  = iniparser_getdouble(dict, buffer, 0);
+            balls[i].cx     = iniparser_getdouble(dict, buffer, 0);
             snprintf(buffer, 50, D_BLL_YPOS, i);
-            balls[i].m_yPos  = iniparser_getdouble(dict, buffer, 0);
+            balls[i].cy     = iniparser_getdouble(dict, buffer, 0);
             snprintf(buffer, 50, D_BLL_MASS, i);
-            balls[i].m_mass  = iniparser_getdouble(dict, buffer, 0);
+            balls[i].mass   = iniparser_getdouble(dict, buffer, 0);
             snprintf(buffer, 50, D_BLL_CHARGE, i);
-            balls[i].m_charge= iniparser_getdouble(dict, buffer, 0); 
+            balls[i].charge = iniparser_getdouble(dict, buffer, 0); 
             LOG(INFO) << "Ball[" << i << "] charge = " 
-                      << balls[i].m_charge;
+                      << balls[i].charge;
         }
     }else{
         LOG(ERROR) << "Invalid value defined in NUMBALLS in job file";
