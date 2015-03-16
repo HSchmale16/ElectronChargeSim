@@ -79,7 +79,8 @@ static int loadConstants(char *fname){
               << " memory for constants";
     CHECK(fname != NULL);
     dict = iniparser_load(fname); // load config file with iniparser
-    
+    CHECK_NOTNULL(dict);
+
     // Load the constants
     XMIN     = iniparser_getdouble(dict, D_XMIN, 0);
     XMAX     = iniparser_getdouble(dict, D_XMAX, 0);
@@ -93,13 +94,14 @@ static int loadConstants(char *fname){
     NUMBALLS = iniparser_getint(dict, D_NUMBALLS, 0);
 
     // Verify information fetched
-    CHECK(XMIN < XMAX);
-    CHECK(YMIN < YMAX);
+    CHECK((XMAX - XMIN) > 0) << "Invalid XMIN & XMAX in job file";
+    CHECK((YMAX - YMIN) > 0) << "Invalid YMIN & YMAX in job file";
     CHECK(DXY_RES > 0);
     LOG(INFO) << "Finished Fetching Global Values from INI file";
 
     if(NUMSRCS > 0){
         charges = new chargeSrc[NUMSRCS];
+        CHECK_NOTNULL(charges);
         for(int i = 0; i < NUMSRCS; i++){
             snprintf(buffer, 50, D_SRC_XPOS, i);
             charges[i].m_xPos = iniparser_getdouble(dict, buffer, 0);
@@ -113,8 +115,10 @@ static int loadConstants(char *fname){
     }else{
         LOG(ERROR) << "Invalid value defined in NUMSRCS in job file";
     }
-    if(NUMBALLS > 0){
+    if((SIMULATE == true) && (NUMBALLS > 0)){
+        LOG(INFO) << "Simulation has " << NUMBALLS  << "pithballs";
         balls = new pithBall[NUMBALLS];
+        CHECK_NOTNULL(balls);
         for(int i = 0; i < NUMBALLS; i++){
             snprintf(buffer, 50, D_BLL_XPOS, i);
             balls[i].m_xPos  = iniparser_getdouble(dict, buffer, 0);
@@ -133,6 +137,7 @@ static int loadConstants(char *fname){
     int arraySz = ((XMAX - XMIN) / DXY_RES) * ((YMAX - YMIN) / DXY_RES);
     VECCOUNT = arraySz;
     vectors = new vec2d[arraySz];
+    CHECK_NOTNULL(vectors);
     LOG(INFO) << "memory allocation and initialization is complete";
     return 0;
 }
