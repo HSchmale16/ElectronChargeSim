@@ -6,8 +6,8 @@
 SHELL=/bin/bash -O extglob -c
 
 # Compiler Settings
-CPP=g++
-CPP_FLGS= \
+CXX=g++
+CXX_FLGS= \
 	-Wall
 
 LD_FLGS= \
@@ -21,24 +21,26 @@ SRC    := $(shell find . -regextype sed -regex ".*/.*.cpp")
 OBJ    := $(SRC:.cpp=.o)
 EXE    := EleFieldSim.out
 
-all: $(EXE)
+.PHONY: all
+all: depend $(EXE)
 
 $(EXE): $(SRC) $(OBJ)
-	$(CPP) $(LD_FLGS) -o $@ $(OBJ) 
-
-depend: .depend
-
-.depend: $(ALLSRC)
-	rm -f ./.depend
-	$(CPP) $(CPP_FLGS) -MM $^ -MF ./.depend;
-
-include .depend
+	$(CXX) $(LD_FLGS) -o $@ $(OBJ) 
 
 .cpp.o:
-	$(CPP) -c $(CPP_FLGS) -o $@ $<
+	$(CXX) -c $(CPP_FLGS) -o $@ $<
 
+.PHONY: clean
 clean:
 	rm -f $(EXE)
 	rm -rf *.o
 
-.PHONY: clean
+# Dependcy Resolution
+depend: .depend
+
+.depend: $(ALLSRC)
+	rm -f ./.depend
+	$(CXX) $(CPP_FLGS) -MM $^ > ./.depend
+
+include .depend
+

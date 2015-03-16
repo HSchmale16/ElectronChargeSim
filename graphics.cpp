@@ -14,6 +14,7 @@ using namespace LibBoard;
 
 static Board board;
 
+// Draws grid and set up board params
 void initDrawing(){
     LOG(INFO) << "initing SVG Draw";
     board.setLineWidth(2);
@@ -40,6 +41,7 @@ void initDrawing(){
     board.drawLine(0, YMIN * SCALE_FACTOR, 0, YMAX * SCALE_FACTOR);
 }
 
+// Draw the location of charge sources and colors them in
 void drawChargeSrcs(){
     if(charges == NULL){
         LOG(WARNING) << "No charges defined";
@@ -70,6 +72,7 @@ void drawChargeSrcs(){
     }
 }
 
+// Draws the Slope Field
 void drawVectors(){
     LOG(INFO) << "Drawing Vectors";
     board.setPenColor(Color::White);
