@@ -34,3 +34,7 @@ logs*
 
 # Depend Files
 .depend
+
+# Doxygen
+*.bak
+DOC
