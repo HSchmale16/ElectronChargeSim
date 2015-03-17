@@ -12,6 +12,18 @@
  * A proportaionality constant for working with equations dealing
  * with electricity in physics.
  */
-const double ELECTRIC_FORCE = 8.9875517873681764E9;
+const double ELECTRIC_FORCE  = 8.9875517873681764E9;
+
+/** \brief Charge of an electron in Columbs
+ */
+const double CHARGE_ELECTRON = -1.6021766E-19;
+
+/** \brief Charge of a proton in Columbs
+ */
+const double CHARGE_PROTON   = 1.6021766E-19;
+
+/** \brief Mass of an electron in kilograms
+ */
+const double MASS_ELECTRON   = 9.10938E-31;
 
 #endif // CONSTANTS_H_INC
