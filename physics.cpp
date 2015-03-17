@@ -36,3 +36,24 @@ void calcElectroForceVecs(){
         }
     }
 }
+
+void calcUpdatedBallState(pithBall *b, double dT){
+    double F;
+    CHECK_NOTNULL(b);
+    CHECK(dT > 0);
+    b->px = b->cx; // Mv Current x&y to prevs
+    b->py = b->cy;
+    for(int n = 0; n < NUMSRCS; n++){
+        F = (abs(9E9 * b->charge * charges[n].m_charge) /
+              pow(calcDistance(&charges[n], b->cx, b->cy), 2));
+        double angle = atan2((b->cx - charges[n].m_yPos),
+                             (b->cy - charges[n].m_xPos));
+        if(charges[n].m_charge > 0){
+            b->fx -= cos(angle) * F;
+            b->fy -= sin(angle) * F; 
+        }else{
+            b->fx += cos(angle) * F;
+            b->fy += sin(angle) * F;
+        }
+    }
+}
