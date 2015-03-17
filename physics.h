@@ -1,4 +1,4 @@
-/** Header for handling physics
+/**\brief Physics handling system for Electric Forces Sim
  * \author Henry J Schmale
  * \date March 11, 2015
  * \file physics.h

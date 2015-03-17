@@ -1,6 +1,7 @@
-/** \brief Electric Field Simulator
+/**\brief  Electric Field Simulator Entry Point
  * \author Henry J Schmale
- * \date March 11, 2015
+ * \date   March 11, 2015
+ * \file   main.cpp
  * 
  * USAGE:
  * argv[0] <s|e> [file]
@@ -21,7 +22,10 @@
 
 //using namespace LibBoard;
 
-// prog entry point
+/**\brief This is the program entry point, stupid
+ * \param argc The number of args passed in argv
+ * \param argv The arguement array
+ */
 int main(int argc, char **argv){
     int argret = parseArgs(argc, argv);
     if(argret == ARG_FAILED){
