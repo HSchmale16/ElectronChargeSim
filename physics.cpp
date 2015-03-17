@@ -1,7 +1,7 @@
-/** Header for handling physics
+/**\brief  Implementation of functions defined in physics.h
  * \author Henry J Schmale
- * \date March 11, 2015
- * \file physics.cpp
+ * \date   March 11, 2015
+ * \file   physics.cpp
  */
 
 #include "physics.h"
